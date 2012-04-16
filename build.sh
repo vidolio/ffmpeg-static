@@ -24,7 +24,7 @@ cd $BUILD_DIR
 ../fetchurl "http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.bz2"
 ../fetchurl "http://webm.googlecode.com/files/libvpx-v1.0.0.tar.bz2"
 ../fetchurl "http://downloads.sourceforge.net/project/faac/faac-src/faac-1.28/faac-1.28.tar.bz2?use_mirror=auto"
-../fetchurl "ftp://ftp.videolan.org/pub/videolan/x264/snapshots/last_stable_x264.tar.bz2"
+../fetchurl "ftp://ftp.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-20120415-2245-stable.tar.bz2"
 ../fetchurl "http://downloads.xvid.org/downloads/xvidcore-1.3.2.tar.bz2"
 ../fetchurl "http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz?use_mirror=auto"
 ../fetchurl "http://www.ffmpeg.org/releases/ffmpeg-0.10.2.tar.gz"
@@ -79,7 +79,7 @@ sed -i -e "s|^char \*strcasestr.*|//\0|" common/mp4v2/mpeg4ip.h
 make -j 2 && make install
 
 echo "*** Building x264 ***"
-cd "$BUILD_DIR/x264-snapshot-20120408-2245-stable"
+cd "$BUILD_DIR/x264-snapshot-20120415-2245-stable"
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j 2 && make install
 
