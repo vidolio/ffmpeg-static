@@ -107,5 +107,5 @@ CFLAGS="-I$TARGET_DIR/include" LDFLAGS="-L$TARGET_DIR/lib -lm" ./configure --pre
 make -j 2 && make install
 
 # reminder
-echo "just a reminder, all files were cached in ~/.cache/fetchurl"
+echo "NOTE: all files were cached in ~/.cache/fetchurl. remove that dir if no longer needed."
 
