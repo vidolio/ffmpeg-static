@@ -28,6 +28,7 @@ cd $BUILD_DIR
 ../fetchurl "http://downloads.xvid.org/downloads/xvidcore-1.3.2.tar.bz2"
 ../fetchurl "http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz?use_mirror=auto"
 ../fetchurl "http://www.ffmpeg.org/releases/ffmpeg-0.10.2.tar.gz"
+../fetchurl "http://sourceforge.net/projects/sox/files/sox/14.4.0/sox-14.4.0.tar.gz"
 
 echo "*** Building yasm ***"
 cd "$BUILD_DIR/yasm-1.2.0"
@@ -104,6 +105,12 @@ echo "*** Building FFmpeg ***"
 cd "$BUILD_DIR/ffmpeg-0.10.2"
 patch -p1 <../../ffmpeg_config.patch
 CFLAGS="-I$TARGET_DIR/include" LDFLAGS="-L$TARGET_DIR/lib -lm" ./configure --prefix=${OUTPUT_DIR:-$TARGET_DIR} --extra-version=static --disable-debug --disable-shared --enable-static --extra-cflags=--static --disable-ffplay --disable-ffserver --disable-doc --enable-gpl --enable-pthreads --enable-postproc --enable-gray --enable-runtime-cpudetect --enable-libfaac --enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libx264 --enable-libxvid --enable-bzlib --enable-zlib --enable-nonfree --enable-version3 --enable-libvpx --disable-devices
+make -j 2 && make install
+
+# FFMpeg
+echo "*** Building Sox ***"
+cd "$BUILD_DIR/sox-14.4.0"
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j 2 && make install
 
 # reminder
