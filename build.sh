@@ -1,1 +1,1 @@
-build_1.0.sh
+build_1.2.sh

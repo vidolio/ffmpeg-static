@@ -1,0 +1,11 @@
+--- /dev/null
++++ ffmpeg-1.0/configure	2012-11-16 00:18:32.379189548 -0700
+@@ -768,6 +768,8 @@
+     check_$type $($cflags_filter $flags) || return
+     flags=$($ldflags_filter $flags)
+     libs=$($ldflags_filter $libs)
++    extralibs=`echo "$extralibs" | sed s/-lm\s+//`
++    extralibs="$extralibs -lm"
+     check_cmd $ld $LDFLAGS $flags $(ld_o $TMPE) $TMPO $libs $extralibs
+ }
+ 

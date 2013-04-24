@@ -1,0 +1,11 @@
+--- configure.fix	2013-03-03 00:18:51.883189804 -0700
++++ build/ffmpeg-1.1.3/configure	2013-03-03 00:18:32.379189548 -0700
+@@ -794,6 +794,8 @@
+     check_$type $($cflags_filter $flags) || return
+     flags=$($ldflags_filter $flags)
+     libs=$($ldflags_filter $libs)
++    extralibs=`echo "$extralibs" | sed s/-lm\s+//`
++    extralibs="$extralibs -lm"
+     check_cmd $ld $LDFLAGS $flags $(ld_o $TMPE) $TMPO $libs $extralibs
+ }
+ 
